@@ -73,12 +73,25 @@ public class LoginController {
         return ReturnResultUtils.success("login succeeded", emp);
         
     }
+
+    @GetMapping("/loginByScreenName")
+    @ApiOperation("loginByScreenName")
+    @SuppressWarnings("unchecked")
+    public ReturnResult<Employee> loginByScreenName(@RequestParam(value = "ticket") String screenName) {
+        Employee emp = employeeService.findByScreenName(screenName);
+        if(emp != null) {
+            EmployeeContextUtils.addEmpToSession(emp);
+        } else {
+            return ReturnResultUtils.error(screenName + "is no exist");
+        }
+        return ReturnResultUtils.success("login succeeded", emp);
+
+    }
     
     @GetMapping("/logout")
     @ApiOperation("logout")
     public ReturnResult<String> logout(HttpServletRequest req) {
-        
-        req.getSession().removeAttribute("emp");
+        EmployeeContextUtils.removeEmpInSession();
         return ReturnResultUtils.success("logout succeeded");
     }
     

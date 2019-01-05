@@ -178,4 +178,17 @@ public class EmployeeController {
         currentEmployee.setIsFirstLogin(false);
         employeeService.save(currentEmployee);
     }
+
+    @PutMapping("/update")
+    @ApiOperation("update employee")
+    public void updateEmployee(){
+        List<Employee> employees = employeeService.findAll();
+        Integer i = 1000;
+        for (Employee employee:employees) {
+            employee.setEmid(i+"");
+            employee.setScreenName("chen"+employee.getEmid());
+            employeeService.save(employee);
+            i++;
+        }
+    }
 }
