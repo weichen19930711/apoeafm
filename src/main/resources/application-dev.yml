@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: ENC(oNPaGy1vhuDlCoB3N9qayC9by/HCMFba)
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    username: Perficient Library Dev <perficient.library@perficient.com>
+server:
+  port: 8000
+  context-path: /
+logging:
+  config: classpath:logging/logback-dev.xml
+library:
+  sso:
+    url: https://gdcsso-qa.perficient.com/cas/login/?service=
+    back-end.base-url: http://localhost:8000
+    front-end.base-url: http://localhost:3000
+    validate-url: https://gdcsso-qa.perficient.com/cas/p3/serviceValidate
+  upload:
+    visit-url: http://localhost/static/
+    upload-folder: C:/static/
+    max-file-size: 10485760
+  schedule:
+    mail:
+      active: false
+      expression: 0/30 * 8-19 * * ?
+    advance-reminder:
+      active: false
+      expression: 0 0 1 * * ?
+    overdue-reminder:
+      active: false
+      expression: 0 0 2 * * ?

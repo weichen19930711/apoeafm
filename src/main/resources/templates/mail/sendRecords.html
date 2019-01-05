@@ -1,0 +1,36 @@
+<style>
+table {
+  border: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+</style>
+<table>
+  <tr>
+    <th>Assignment No.</th>
+    <th>English Name</th>
+    <th>Deduction</th>
+    <th>Tag Number</th>
+    <th>Title</th>
+    <th>Purchaser</th>
+    <th>IsPaid</th>
+    <th>Paid Time</th>
+  </tr>
+  <th:block th:each="map : ${tableData}">
+    <tr>
+      <td th:text="${map.AssignmentNo}"></td>
+      <td th:text="${map.EnglishName}"></td>
+      <td th:text="${map.Deduction}"></td>
+      <td th:text="${map.TagNumber}"></td>
+      <td th:text="${map.Title}"></td>
+      <td th:text="${map.Purchaser}"></td>
+      <td th:text="${map.IsPaid}"></td>
+      <td th:text="${map.PaidTime}"></td>
+    </tr>
+  </th:block>
+</table>
